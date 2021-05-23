@@ -37,9 +37,10 @@ class _MyHomePageState extends State<MyHomePage> {
     initPlatformState();
   }
 
-   initPlatformState() async {
+  initPlatformState() async {
     try {
-      await FlutterBugfender.init("VocUSyztliDe9H98ZowwQEoOfqObXfRR", enableAndroidLogcatLogging: false);
+      await FlutterBugfender.init("VocUSyztliDe9H98ZowwQEoOfqObXfRR",
+          enableAndroidLogcatLogging: false);
       await FlutterBugfender.log("Initialized Bugfender");
     } catch (e) {
       print("Error found!!!! $e");
@@ -56,12 +57,14 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _sendFeedback() {
-    FlutterBugfender.sendUserFeedback("User Feedback", "The app works very well!");
+    FlutterBugfender.sendUserFeedback(
+        "User Feedback", "The app works very well!");
   }
 
   void _reportIssue() {
     FlutterBugfender.error('Reporting issue');
-    FlutterBugfender.sendIssue("Issue Found", "We have found an issue in the counter");
+    FlutterBugfender.sendIssue(
+        "Issue Found", "We have found an issue in the counter");
   }
 
   @override
@@ -84,39 +87,31 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: Column(
-    mainAxisAlignment: MainAxisAlignment.end,
-    children: [
-      FloatingActionButton(
-        child: Icon(
-          Icons.add
+      floatingActionButton:
+          Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+        FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: _incrementCounter,
+          heroTag: null,
         ),
-        onPressed: _incrementCounter,
-        heroTag: null,
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      FloatingActionButton(           
-        child: Icon(
-          Icons.feedback
+        SizedBox(
+          height: 10,
         ),
-        onPressed: _sendFeedback,
-        heroTag: null,
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      FloatingActionButton(           
-        child: Icon(
-          Icons.bug_report
+        FloatingActionButton(
+          child: Icon(Icons.feedback),
+          onPressed: _sendFeedback,
+          heroTag: null,
         ),
-        onPressed: _reportIssue,
-        heroTag: null,
-      )
-    ]
-  ),
-       // This trailing comma makes auto-formatting nicer for build methods.
+        SizedBox(
+          height: 10,
+        ),
+        FloatingActionButton(
+          child: Icon(Icons.bug_report),
+          onPressed: _reportIssue,
+          heroTag: null,
+        )
+      ]),
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
