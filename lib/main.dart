@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bugfender/flutter_bugfender.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -28,6 +30,23 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+
+  @override
+  initState() {
+    super.initState();
+    initPlatformState();
+  }
+
+   initPlatformState() async {
+    try {
+      await FlutterBugfender.init("VocUSyztliDe9H98ZowwQEoOfqObXfRR", enableAndroidLogcatLogging: false);
+      await FlutterBugfender.log("Initialized Bugfender");
+    } catch (e) {
+      print("Error found!!!! $e");
+      throw e;
+    }
+    if (!mounted) return;
+  }
 
   void _incrementCounter() {
     setState(() {
