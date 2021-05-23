@@ -1,6 +1,6 @@
-# tryit
+# tryit - A Flutter and Bugfender Integration
 
-A new Flutter project.
+It is a project to showcase the flutter integration with Bugfender.
 
 ## Getting Started
 
