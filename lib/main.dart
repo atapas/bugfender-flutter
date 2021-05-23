@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _sendFeedback() {
-    
+    FlutterBugfender.sendUserFeedback("User Feedback", "The app works very well!");
   }
 
   @override
@@ -96,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(
           Icons.feedback
         ),
-        onPressed: () => _sendFeedback,
+        onPressed: _sendFeedback,
         heroTag: null,
       )
     ]
