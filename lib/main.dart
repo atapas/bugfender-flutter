@@ -59,6 +59,11 @@ class _MyHomePageState extends State<MyHomePage> {
     FlutterBugfender.sendUserFeedback("User Feedback", "The app works very well!");
   }
 
+  void _reportIssue() {
+    FlutterBugfender.error('Reporting issue');
+    FlutterBugfender.sendIssue("Issue Found", "We have found an issue in the counter");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,6 +102,16 @@ class _MyHomePageState extends State<MyHomePage> {
           Icons.feedback
         ),
         onPressed: _sendFeedback,
+        heroTag: null,
+      ),
+      SizedBox(
+        height: 10,
+      ),
+      FloatingActionButton(           
+        child: Icon(
+          Icons.bug_report
+        ),
+        onPressed: _reportIssue,
         heroTag: null,
       )
     ]
